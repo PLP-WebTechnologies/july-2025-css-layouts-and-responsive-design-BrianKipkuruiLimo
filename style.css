@@ -1,0 +1,99 @@
+/* ====== Base Styles ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ====== Grid Layout ====== */
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+}
+
+/* Layout sections */
+.site-header   { grid-area: header; background: #4a90e2; color: white; text-align: center; padding: 20px; }
+.site-nav      { grid-area: nav; background: #333; }
+.site-main     { grid-area: main; display: grid; grid-template-columns: 2fr 1fr; gap: 20px; padding: 20px; }
+.site-footer   { grid-area: footer; background: #222; color: white; text-align: center; padding: 15px; }
+
+/* ====== Navigation (Flexbox) ====== */
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.site-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ====== Content + Cards (Flexbox inside Grid) ====== */
+.content h2 { margin-bottom: 10px; }
+
+.card-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 150px;
+  background: #f5f5f5;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ====== Sidebar ====== */
+.sidebar {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+/* ====== Responsive Breakpoints ====== */
+
+/* Tablet: stack nav vertically, adjust grid */
+@media (max-width: 900px) {
+  .site-main {
+    grid-template-columns: 1fr;
+  }
+
+  .card-container {
+    justify-content: center;
+  }
+}
+
+/* Mobile: stack everything */
+@media (max-width: 600px) {
+  .site-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container {
+    flex-direction: column;
+  }
+}
